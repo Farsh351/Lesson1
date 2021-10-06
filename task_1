@@ -1,0 +1,35 @@
+#Задание 1
+one_minute=60#В минуте 60 секунд
+one_hour=3600#В часе 3600 секунд
+one_day=86400#В одном дне 86400 секунд
+one_month=2592000#Так как мы ограничиваемся по условию одним месяцем,я взял один месяц(30 дней),как ограничение
+while True:
+    try:
+        duration = int(input('Введите число(секунды) от 0 до 2592000 '))
+        if duration <= one_month:
+            if duration>=0:
+                if duration < one_minute:
+                    print('{} сек'.format(duration))
+                elif one_minute <= duration and duration <= one_hour:
+                    minute = duration // one_minute
+                    second = duration % one_minute
+                    print('{}мин {}сек'.format(minute, second))
+                elif duration >= one_hour and duration <= one_day:
+                    hour = duration // one_hour
+                    minute = (duration % one_hour) // one_minute
+                    second = (duration % one_hour) % one_minute
+                    print('{}ч {}мин {}сек'.format(hour, minute, second))
+                elif duration >= one_day:
+                    day = duration // one_day
+                    hour = (duration % one_day) // one_hour
+                    minute = ((duration % one_day) % one_hour) // one_minute
+                    second = ((duration % one_day) % one_hour) % one_minute
+                    print('{}дн {}ч {}мин {}сек'.format(day, hour, minute, second))
+
+                break
+            else:
+                print('Введите число больше нуля')
+        else:
+            print('Введите число меньше 2592000')
+    except:
+        print("Ошибка - это не число")
